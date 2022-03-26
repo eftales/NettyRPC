@@ -6,6 +6,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 public class Client {
     public static void main(String[] argv) throws Exception{
@@ -19,6 +20,7 @@ public class Client {
                 handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new ProtobufEncoder());
                         ch.pipeline().addLast(new BussinessHandler());
                     }
                 });
