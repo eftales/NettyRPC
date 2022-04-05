@@ -4,7 +4,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import netty.codec.MessagePOJO;
+import netty.service.MessagePOJO;
 
 
 public class ServerInitializer extends ChannelInitializer<SocketChannel>{

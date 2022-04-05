@@ -8,10 +8,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.apache.log4j.Logger;
 
-public class Server {
-    public static Logger log = Logger.getLogger(Server.class);
+public class NettyServer {
+    public static Logger log = Logger.getLogger(NettyServer.class);
     public static void main(String[] argvs) throws Exception{
         log.info("Hello Netty Server");
+
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1); // 仅处理连接请求
         NioEventLoopGroup workGroup = new NioEventLoopGroup();  // 处理业务
 

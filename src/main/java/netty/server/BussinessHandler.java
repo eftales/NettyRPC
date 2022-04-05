@@ -1,21 +1,37 @@
 package netty.server;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.CharsetUtil;
-import netty.codec.MessagePOJO;
+import netty.service.MessagePOJO;
 import org.apache.log4j.Logger;
 
 
+import java.lang.reflect.Method;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.MyQuery> {
-    private static Logger log = Logger.getLogger(Server.class);
+    private static Logger log = Logger.getLogger(NettyServer.class);
+    private RPCServiceImp RPCServiceImp;
+    private Method[] methods;
+
+    public BussinessHandler() {
+//        RPCServiceImp rpcServiceImp =  new RPCServiceImp();
+//        ClassLoader loader = rpcServiceImp.getClass().getClassLoader();
+//        Class[] interfaces = rpcServiceImp.getClass().getInterfaces();
+//        RPCServiceProxy rpcServiceProxy = new RPCServiceProxy(rpcServiceImp);
+//        rpcService = (RPCService) Proxy.newProxyInstance(loader,interfaces,rpcServiceProxy);
+
+        try {
+            Class clz = RPCServiceImp.class;
+            RPCServiceImp = (RPCServiceImp)clz.newInstance();
+            methods = clz.getMethods();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("Client "+ctx.channel().remoteAddress() +" connect at "+new Date());
@@ -24,16 +40,29 @@ public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.My
     @Override
     // 当收到一个完整的应用层消息报文，channelRead会被触发一次
     protected void channelRead0(ChannelHandlerContext ctx, MessagePOJO.MyQuery msg) throws Exception {
-        List<Integer> stus =  msg.getStuIDList();
-
         MessagePOJO.MyReply.Builder reply = MessagePOJO.MyReply.newBuilder();
-        MessagePOJO.Student.Builder stuBuilder = MessagePOJO.Student.newBuilder();
+        reply.setMethodName(msg.getMethodName());
 
-        for(int i=0;i<stus.size();++i){
-            int id = stus.get(i);
-            reply.addStus(stuBuilder.setName(String.valueOf(id)).setId(id).setScore(id).build());
+        // 根据 msg.getMethodName 获取需要调用的方法
+        for(int i=0;i<methods.length;++i){
+            if(methods[i].getName().equals(msg.getMethodName())){
+                if(msg.hasStuIDs()){
+                    MessagePOJO.StuInfos res =  (MessagePOJO.StuInfos)methods[i].invoke(RPCServiceImp,msg.getStuIDs());
+                    reply.setStuInfos(res);
+
+                }
+                else if(msg.hasStu()){
+                    boolean res =  (boolean)methods[i].invoke(RPCServiceImp,msg.hasStu());
+                    reply.setSucceed(res);
+                }
+                else{
+                    log.error("方法名和参数不匹配");
+                    return;
+                }
+
+            }
         }
-
+        log.info("RPC succeed.");
         ctx.writeAndFlush(reply);
 
     }

@@ -2,36 +2,31 @@ package netty.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
-import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import netty.codec.MessagePOJO;
+import netty.service.MessagePOJO;
+import netty.service.RPCService;
+
+import java.lang.reflect.Proxy;
 
 public class Client {
     public static void main(String[] argv) throws Exception{
-        System.out.println("Hello Netty Client");
 
-        NioEventLoopGroup workGroup = new NioEventLoopGroup();
-        ClientInitializer initializer = new ClientInitializer();
 
-        Bootstrap bootstrap = new Bootstrap();
-        bootstrap.group(workGroup).
-                channel(NioSocketChannel.class).
-                handler(initializer);
+        // 创建按代理类
+        RPCService rpcService = (RPCService) Proxy.newProxyInstance(
+                RPCService.class.getClassLoader(), // 传入ClassLoader
+                new Class[] { RPCService.class }, // 传入要实现的接口
+                new RPCServiceClientProxy(new NettyClient())); // 传入处理调用方法的InvocationHandler
 
-        ChannelFuture cf =  bootstrap.connect("127.0.0.1",8888).sync();
+        MessagePOJO.StuIDs.Builder stuIDs = MessagePOJO.StuIDs.newBuilder();
+        stuIDs.addStuID(0).addStuID(1).addStuID(2).addStuID(3);
 
-        // 生成信息并发送
-        MessagePOJO.MyQuery.Builder msg = MessagePOJO.MyQuery.newBuilder();
-        msg.addStuID(1).addStuID(2).addStuID(3);
-        initializer.ctx.writeAndFlush(msg);
-
-        cf.channel().closeFuture().sync();
-        workGroup.shutdownGracefully();
+        MessagePOJO.StuInfos res = rpcService.getStudentInfo(stuIDs.build());
+        // 打印返回值
+        for(int i=0;i<res.getStusCount();++i){
+            System.out.println(res.getStus(i));
+        }
 
 
     }

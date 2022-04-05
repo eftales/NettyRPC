@@ -1,21 +1,17 @@
 package netty.client;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.CharsetUtil;
-import netty.codec.MessagePOJO;
+import netty.service.MessagePOJO;
 import org.apache.log4j.Logger;
 
 
-import java.util.Date;
 import java.util.List;
 
 public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.MyReply> {
     private static Logger log = Logger.getLogger(BussinessHandler.class);
     public ChannelHandlerContext ctx;
+    public RPCServiceClientProxy proxy;
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 
@@ -23,10 +19,23 @@ public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.My
 
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, MessagePOJO.MyReply msg) throws Exception {
-        List<MessagePOJO.Student> stus = msg.getStusList();
-        for(int i=0;i<stus.size();++i){
-            log.info(stus.get(i));
+    protected synchronized void channelRead0(ChannelHandlerContext ctx, MessagePOJO.MyReply msg) throws Exception {
+        switch (msg.getMethodName()){
+            case "getStudentInfo":
+                proxy.setRes(msg.getStuInfos());
+                break;
+
+            case "setStudentInfo":
+                proxy.setRes(msg.getSucceed());
+                break;
+
+            default:
+                return;
+        }
+
+
+        synchronized(ctx){
+            ctx.notify(); // 通知代理类数据到达
         }
 
     }
@@ -35,4 +44,6 @@ public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.My
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         this.ctx = ctx;
     }
+
+
 }
