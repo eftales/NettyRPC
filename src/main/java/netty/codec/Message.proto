@@ -3,33 +3,18 @@ option java_package = "netty.codec";
 option java_outer_classname = "MessagePOJO";
 
 
-message MyMessage{
-  DataType data_type = 1;
-
-  // 每次只能出现其中的一个类型
-  oneof dataBody{
-    Student student = 2;
-    Teacher teacher = 3;
-
-  }
-
+message MyQuery{
+  repeated int32 stuID=1;
 }
 
-enum DataType{
-  StudentType = 0;
-  TeacherType = 1;
+message MyReply{
+  repeated Student stus=1;
+
 }
 
 message Student{
   int32  id = 1;
   string name = 2;
+  int32 score = 3;
 
 }
-
-message Teacher{
-  int32  age = 1;
-  string name = 2;
-
-}
-
-

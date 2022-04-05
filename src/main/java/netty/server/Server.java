@@ -3,15 +3,15 @@ package netty.server;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.apache.log4j.Logger;
 
 public class Server {
+    public static Logger log = Logger.getLogger(Server.class);
     public static void main(String[] argvs) throws Exception{
-        System.out.println("Hello Netty Server");
+        log.info("Hello Netty Server");
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1); // 仅处理连接请求
         NioEventLoopGroup workGroup = new NioEventLoopGroup();  // 处理业务
 
@@ -27,7 +27,7 @@ public class Server {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
                 if(cf.isSuccess()){
-                    System.out.println("Bind succeed");
+                    log.info("Bind succeed");
                 }
             }
         });

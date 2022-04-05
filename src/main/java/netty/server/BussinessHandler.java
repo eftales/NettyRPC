@@ -4,93 +4,43 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 import netty.codec.MessagePOJO;
+import org.apache.log4j.Logger;
 
 
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
-public class BussinessHandler extends ChannelInboundHandlerAdapter {
-
+public class BussinessHandler extends SimpleChannelInboundHandler<MessagePOJO.MyQuery> {
+    private static Logger log = Logger.getLogger(Server.class);
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("Client connect at "+new Date().getTime());
-//        ctx.channel().eventLoop().schedule(new Runnable() { // schedule 会先等待 TaskQueue 中的任务执行完毕，如果此时时间已到再执行
-//            @Override
-//            public void run() {
-//
-//                ctx.writeAndFlush(Unpooled.copiedBuffer("4st task, now is "+new Date().getTime(),CharsetUtil.UTF_8));
-//            }
-//        },5, TimeUnit.SECONDS);
+        log.info("Client "+ctx.channel().remoteAddress() +" connect at "+new Date());
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//        System.out.println();
-//        ByteBuf buf = (ByteBuf)msg;
-//        System.out.println("Now is "+new Date().getTime() + " "+ctx.channel().remoteAddress()+" "+ buf.toString(CharsetUtil.UTF_8));
-//
-//        // 不同 channel 的 TaskQueue 并发执行
-//        ctx.channel().eventLoop().execute(new Runnable() { // TaskQueue 中的任务也是线性执行的！！！
-//            @Override
-//            public void run() {
-//                try{
-//                    Thread.sleep(10*1000);
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//
-//                ctx.writeAndFlush(Unpooled.copiedBuffer("1st task, now is "+new Date().getTime(),CharsetUtil.UTF_8));
-//            }
-//        });
-//
-//
-//        ctx.channel().eventLoop().execute(new Runnable() { // TaskQueue 中的任务也是线性执行的！！！
-//            @Override
-//            public void run() {
-//                try{
-//                    Thread.sleep(10*1000);
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//                ctx.writeAndFlush(Unpooled.copiedBuffer("2st task, now is "+new Date().getTime(),CharsetUtil.UTF_8));
-//            }
-//        });
+    // 当收到一个完整的应用层消息报文，channelRead会被触发一次
+    protected void channelRead0(ChannelHandlerContext ctx, MessagePOJO.MyQuery msg) throws Exception {
+        List<Integer> stus =  msg.getStuIDList();
 
-        if(msg instanceof MessagePOJO.MyMessage){
-            MessagePOJO.MyMessage mmsg = (MessagePOJO.MyMessage) msg;
+        MessagePOJO.MyReply.Builder reply = MessagePOJO.MyReply.newBuilder();
+        MessagePOJO.Student.Builder stuBuilder = MessagePOJO.Student.newBuilder();
 
-
-            switch (mmsg.getDataType()){
-                case StudentType:
-                    MessagePOJO.Student stu = mmsg.getStudent();
-                    System.out.println("客户端发送的数据 id:"+stu.getId()+" name:"+stu.getName());
-                    break;
-                case TeacherType:
-                    MessagePOJO.Teacher tch = mmsg.getTeacher();
-                    System.out.println("客户端发送的数据 age:"+tch.getAge()+" name:"+tch.getName());
-                    break;
-            }
+        for(int i=0;i<stus.size();++i){
+            int id = stus.get(i);
+            reply.addStus(stuBuilder.setName(String.valueOf(id)).setId(id).setScore(id).build());
         }
 
+        ctx.writeAndFlush(reply);
 
     }
 
     @Override
+    // 每次读取完Socket的接收缓冲区的报文，channelReadComplete会被触发一次
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-//        ctx.channel().eventLoop().execute(new Runnable() { // 不同方法的 TaskQueue 中的任务也是顺序执行的！！！
-//            @Override
-//            public void run() {
-//                try{
-//                    Thread.sleep(10*1000);
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//                ctx.writeAndFlush(Unpooled.copiedBuffer("3st task, now is "+new Date().getTime(),CharsetUtil.UTF_8));
-//            }
-//        });
 
     }
 

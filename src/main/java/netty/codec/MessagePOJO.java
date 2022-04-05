@@ -14,159 +14,37 @@ public final class MessagePOJO {
         registerAllExtensions(
                 (com.google.protobuf.ExtensionRegistryLite) registry);
     }
-    /**
-     * Protobuf enum {@code DataType}
-     */
-    public enum DataType
-            implements com.google.protobuf.ProtocolMessageEnum {
-        /**
-         * <code>StudentType = 0;</code>
-         */
-        StudentType(0),
-        /**
-         * <code>TeacherType = 1;</code>
-         */
-        TeacherType(1),
-        UNRECOGNIZED(-1),
-        ;
-
-        /**
-         * <code>StudentType = 0;</code>
-         */
-        public static final int StudentType_VALUE = 0;
-        /**
-         * <code>TeacherType = 1;</code>
-         */
-        public static final int TeacherType_VALUE = 1;
-
-
-        public final int getNumber() {
-            if (this == UNRECOGNIZED) {
-                throw new java.lang.IllegalArgumentException(
-                        "Can't get the number of an unknown enum value.");
-            }
-            return value;
-        }
-
-        /**
-         * @deprecated Use {@link #forNumber(int)} instead.
-         */
-        @java.lang.Deprecated
-        public static DataType valueOf(int value) {
-            return forNumber(value);
-        }
-
-        public static DataType forNumber(int value) {
-            switch (value) {
-                case 0: return StudentType;
-                case 1: return TeacherType;
-                default: return null;
-            }
-        }
-
-        public static com.google.protobuf.Internal.EnumLiteMap<DataType>
-        internalGetValueMap() {
-            return internalValueMap;
-        }
-        private static final com.google.protobuf.Internal.EnumLiteMap<
-                DataType> internalValueMap =
-                new com.google.protobuf.Internal.EnumLiteMap<DataType>() {
-                    public DataType findValueByNumber(int number) {
-                        return DataType.forNumber(number);
-                    }
-                };
-
-        public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-            return getDescriptor().getValues().get(ordinal());
-        }
-        public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-            return getDescriptor();
-        }
-        public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-            return netty.codec.MessagePOJO.getDescriptor().getEnumTypes().get(0);
-        }
-
-        private static final DataType[] VALUES = values();
-
-        public static DataType valueOf(
-                com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-            if (desc.getType() != getDescriptor()) {
-                throw new java.lang.IllegalArgumentException(
-                        "EnumValueDescriptor is not for this type.");
-            }
-            if (desc.getIndex() == -1) {
-                return UNRECOGNIZED;
-            }
-            return VALUES[desc.getIndex()];
-        }
-
-        private final int value;
-
-        private DataType(int value) {
-            this.value = value;
-        }
-
-        // @@protoc_insertion_point(enum_scope:DataType)
-    }
-
-    public interface MyMessageOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:MyMessage)
+    public interface MyQueryOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:MyQuery)
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.DataType data_type = 1;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        int getDataTypeValue();
+        java.util.List<java.lang.Integer> getStuIDList();
         /**
-         * <code>.DataType data_type = 1;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        netty.codec.MessagePOJO.DataType getDataType();
-
+        int getStuIDCount();
         /**
-         * <code>.Student student = 2;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        boolean hasStudent();
-        /**
-         * <code>.Student student = 2;</code>
-         */
-        netty.codec.MessagePOJO.Student getStudent();
-        /**
-         * <code>.Student student = 2;</code>
-         */
-        netty.codec.MessagePOJO.StudentOrBuilder getStudentOrBuilder();
-
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        boolean hasTeacher();
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        netty.codec.MessagePOJO.Teacher getTeacher();
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        netty.codec.MessagePOJO.TeacherOrBuilder getTeacherOrBuilder();
-
-        public netty.codec.MessagePOJO.MyMessage.DataBodyCase getDataBodyCase();
+        int getStuID(int index);
     }
     /**
-     * Protobuf type {@code MyMessage}
+     * Protobuf type {@code MyQuery}
      */
-    public  static final class MyMessage extends
+    public  static final class MyQuery extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:MyMessage)
-            MyMessageOrBuilder {
+            // @@protoc_insertion_point(message_implements:MyQuery)
+            MyQueryOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use MyMessage.newBuilder() to construct.
-        private MyMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use MyQuery.newBuilder() to construct.
+        private MyQuery(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private MyMessage() {
-            dataType_ = 0;
+        private MyQuery() {
+            stuID_ = java.util.Collections.emptyList();
         }
 
         @java.lang.Override
@@ -174,7 +52,7 @@ public final class MessagePOJO {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private MyMessage(
+        private MyQuery(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -194,37 +72,24 @@ public final class MessagePOJO {
                             done = true;
                             break;
                         case 8: {
-                            int rawValue = input.readEnum();
-
-                            dataType_ = rawValue;
+                            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                                stuID_ = new java.util.ArrayList<java.lang.Integer>();
+                                mutable_bitField0_ |= 0x00000001;
+                            }
+                            stuID_.add(input.readInt32());
                             break;
                         }
-                        case 18: {
-                            netty.codec.MessagePOJO.Student.Builder subBuilder = null;
-                            if (dataBodyCase_ == 2) {
-                                subBuilder = ((netty.codec.MessagePOJO.Student) dataBody_).toBuilder();
+                        case 10: {
+                            int length = input.readRawVarint32();
+                            int limit = input.pushLimit(length);
+                            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
+                                stuID_ = new java.util.ArrayList<java.lang.Integer>();
+                                mutable_bitField0_ |= 0x00000001;
                             }
-                            dataBody_ =
-                                    input.readMessage(netty.codec.MessagePOJO.Student.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom((netty.codec.MessagePOJO.Student) dataBody_);
-                                dataBody_ = subBuilder.buildPartial();
+                            while (input.getBytesUntilLimit() > 0) {
+                                stuID_.add(input.readInt32());
                             }
-                            dataBodyCase_ = 2;
-                            break;
-                        }
-                        case 26: {
-                            netty.codec.MessagePOJO.Teacher.Builder subBuilder = null;
-                            if (dataBodyCase_ == 3) {
-                                subBuilder = ((netty.codec.MessagePOJO.Teacher) dataBody_).toBuilder();
-                            }
-                            dataBody_ =
-                                    input.readMessage(netty.codec.MessagePOJO.Teacher.parser(), extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom((netty.codec.MessagePOJO.Teacher) dataBody_);
-                                dataBody_ = subBuilder.buildPartial();
-                            }
-                            dataBodyCase_ = 3;
+                            input.popLimit(limit);
                             break;
                         }
                         default: {
@@ -242,129 +107,48 @@ public final class MessagePOJO {
                 throw new com.google.protobuf.InvalidProtocolBufferException(
                         e).setUnfinishedMessage(this);
             } finally {
+                if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                    stuID_ = java.util.Collections.unmodifiableList(stuID_);
+                }
                 this.unknownFields = unknownFields.build();
                 makeExtensionsImmutable();
             }
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return netty.codec.MessagePOJO.internal_static_MyMessage_descriptor;
+            return netty.codec.MessagePOJO.internal_static_MyQuery_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return netty.codec.MessagePOJO.internal_static_MyMessage_fieldAccessorTable
+            return netty.codec.MessagePOJO.internal_static_MyQuery_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            netty.codec.MessagePOJO.MyMessage.class, netty.codec.MessagePOJO.MyMessage.Builder.class);
+                            netty.codec.MessagePOJO.MyQuery.class, netty.codec.MessagePOJO.MyQuery.Builder.class);
         }
 
-        private int dataBodyCase_ = 0;
-        private java.lang.Object dataBody_;
-        public enum DataBodyCase
-                implements com.google.protobuf.Internal.EnumLite {
-            STUDENT(2),
-            TEACHER(3),
-            DATABODY_NOT_SET(0);
-            private final int value;
-            private DataBodyCase(int value) {
-                this.value = value;
-            }
-            /**
-             * @deprecated Use {@link #forNumber(int)} instead.
-             */
-            @java.lang.Deprecated
-            public static DataBodyCase valueOf(int value) {
-                return forNumber(value);
-            }
-
-            public static DataBodyCase forNumber(int value) {
-                switch (value) {
-                    case 2: return STUDENT;
-                    case 3: return TEACHER;
-                    case 0: return DATABODY_NOT_SET;
-                    default: return null;
-                }
-            }
-            public int getNumber() {
-                return this.value;
-            }
-        };
-
-        public DataBodyCase
-        getDataBodyCase() {
-            return DataBodyCase.forNumber(
-                    dataBodyCase_);
-        }
-
-        public static final int DATA_TYPE_FIELD_NUMBER = 1;
-        private int dataType_;
+        public static final int STUID_FIELD_NUMBER = 1;
+        private java.util.List<java.lang.Integer> stuID_;
         /**
-         * <code>.DataType data_type = 1;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        public int getDataTypeValue() {
-            return dataType_;
+        public java.util.List<java.lang.Integer>
+        getStuIDList() {
+            return stuID_;
         }
         /**
-         * <code>.DataType data_type = 1;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        public netty.codec.MessagePOJO.DataType getDataType() {
-            @SuppressWarnings("deprecation")
-            netty.codec.MessagePOJO.DataType result = netty.codec.MessagePOJO.DataType.valueOf(dataType_);
-            return result == null ? netty.codec.MessagePOJO.DataType.UNRECOGNIZED : result;
-        }
-
-        public static final int STUDENT_FIELD_NUMBER = 2;
-        /**
-         * <code>.Student student = 2;</code>
-         */
-        public boolean hasStudent() {
-            return dataBodyCase_ == 2;
+        public int getStuIDCount() {
+            return stuID_.size();
         }
         /**
-         * <code>.Student student = 2;</code>
+         * <code>repeated int32 stuID = 1;</code>
          */
-        public netty.codec.MessagePOJO.Student getStudent() {
-            if (dataBodyCase_ == 2) {
-                return (netty.codec.MessagePOJO.Student) dataBody_;
-            }
-            return netty.codec.MessagePOJO.Student.getDefaultInstance();
+        public int getStuID(int index) {
+            return stuID_.get(index);
         }
-        /**
-         * <code>.Student student = 2;</code>
-         */
-        public netty.codec.MessagePOJO.StudentOrBuilder getStudentOrBuilder() {
-            if (dataBodyCase_ == 2) {
-                return (netty.codec.MessagePOJO.Student) dataBody_;
-            }
-            return netty.codec.MessagePOJO.Student.getDefaultInstance();
-        }
-
-        public static final int TEACHER_FIELD_NUMBER = 3;
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        public boolean hasTeacher() {
-            return dataBodyCase_ == 3;
-        }
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        public netty.codec.MessagePOJO.Teacher getTeacher() {
-            if (dataBodyCase_ == 3) {
-                return (netty.codec.MessagePOJO.Teacher) dataBody_;
-            }
-            return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-        }
-        /**
-         * <code>.Teacher teacher = 3;</code>
-         */
-        public netty.codec.MessagePOJO.TeacherOrBuilder getTeacherOrBuilder() {
-            if (dataBodyCase_ == 3) {
-                return (netty.codec.MessagePOJO.Teacher) dataBody_;
-            }
-            return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-        }
+        private int stuIDMemoizedSerializedSize = -1;
 
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
@@ -380,14 +164,13 @@ public final class MessagePOJO {
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
-            if (dataType_ != netty.codec.MessagePOJO.DataType.StudentType.getNumber()) {
-                output.writeEnum(1, dataType_);
+            getSerializedSize();
+            if (getStuIDList().size() > 0) {
+                output.writeUInt32NoTag(10);
+                output.writeUInt32NoTag(stuIDMemoizedSerializedSize);
             }
-            if (dataBodyCase_ == 2) {
-                output.writeMessage(2, (netty.codec.MessagePOJO.Student) dataBody_);
-            }
-            if (dataBodyCase_ == 3) {
-                output.writeMessage(3, (netty.codec.MessagePOJO.Teacher) dataBody_);
+            for (int i = 0; i < stuID_.size(); i++) {
+                output.writeInt32NoTag(stuID_.get(i));
             }
             unknownFields.writeTo(output);
         }
@@ -398,17 +181,19 @@ public final class MessagePOJO {
             if (size != -1) return size;
 
             size = 0;
-            if (dataType_ != netty.codec.MessagePOJO.DataType.StudentType.getNumber()) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeEnumSize(1, dataType_);
-            }
-            if (dataBodyCase_ == 2) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(2, (netty.codec.MessagePOJO.Student) dataBody_);
-            }
-            if (dataBodyCase_ == 3) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(3, (netty.codec.MessagePOJO.Teacher) dataBody_);
+            {
+                int dataSize = 0;
+                for (int i = 0; i < stuID_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(stuID_.get(i));
+                }
+                size += dataSize;
+                if (!getStuIDList().isEmpty()) {
+                    size += 1;
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(dataSize);
+                }
+                stuIDMemoizedSerializedSize = dataSize;
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -420,28 +205,14 @@ public final class MessagePOJO {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof netty.codec.MessagePOJO.MyMessage)) {
+            if (!(obj instanceof netty.codec.MessagePOJO.MyQuery)) {
                 return super.equals(obj);
             }
-            netty.codec.MessagePOJO.MyMessage other = (netty.codec.MessagePOJO.MyMessage) obj;
+            netty.codec.MessagePOJO.MyQuery other = (netty.codec.MessagePOJO.MyQuery) obj;
 
             boolean result = true;
-            result = result && dataType_ == other.dataType_;
-            result = result && getDataBodyCase().equals(
-                    other.getDataBodyCase());
-            if (!result) return false;
-            switch (dataBodyCase_) {
-                case 2:
-                    result = result && getStudent()
-                            .equals(other.getStudent());
-                    break;
-                case 3:
-                    result = result && getTeacher()
-                            .equals(other.getTeacher());
-                    break;
-                case 0:
-                default:
-            }
+            result = result && getStuIDList()
+                    .equals(other.getStuIDList());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
@@ -453,88 +224,78 @@ public final class MessagePOJO {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
-            hash = (37 * hash) + DATA_TYPE_FIELD_NUMBER;
-            hash = (53 * hash) + dataType_;
-            switch (dataBodyCase_) {
-                case 2:
-                    hash = (37 * hash) + STUDENT_FIELD_NUMBER;
-                    hash = (53 * hash) + getStudent().hashCode();
-                    break;
-                case 3:
-                    hash = (37 * hash) + TEACHER_FIELD_NUMBER;
-                    hash = (53 * hash) + getTeacher().hashCode();
-                    break;
-                case 0:
-                default:
+            if (getStuIDCount() > 0) {
+                hash = (37 * hash) + STUID_FIELD_NUMBER;
+                hash = (53 * hash) + getStuIDList().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
         }
 
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(byte[] data)
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(java.io.InputStream input)
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseDelimitedFrom(java.io.InputStream input)
+        public static netty.codec.MessagePOJO.MyQuery parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseDelimitedFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static netty.codec.MessagePOJO.MyMessage parseFrom(
+        public static netty.codec.MessagePOJO.MyQuery parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -547,7 +308,7 @@ public final class MessagePOJO {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(netty.codec.MessagePOJO.MyMessage prototype) {
+        public static Builder newBuilder(netty.codec.MessagePOJO.MyQuery prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -563,26 +324,26 @@ public final class MessagePOJO {
             return builder;
         }
         /**
-         * Protobuf type {@code MyMessage}
+         * Protobuf type {@code MyQuery}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:MyMessage)
-                netty.codec.MessagePOJO.MyMessageOrBuilder {
+                // @@protoc_insertion_point(builder_implements:MyQuery)
+                netty.codec.MessagePOJO.MyQueryOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return netty.codec.MessagePOJO.internal_static_MyMessage_descriptor;
+                return netty.codec.MessagePOJO.internal_static_MyQuery_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return netty.codec.MessagePOJO.internal_static_MyMessage_fieldAccessorTable
+                return netty.codec.MessagePOJO.internal_static_MyQuery_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                netty.codec.MessagePOJO.MyMessage.class, netty.codec.MessagePOJO.MyMessage.Builder.class);
+                                netty.codec.MessagePOJO.MyQuery.class, netty.codec.MessagePOJO.MyQuery.Builder.class);
             }
 
-            // Construct using netty.codec.MessagePOJO.MyMessage.newBuilder()
+            // Construct using netty.codec.MessagePOJO.MyQuery.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -600,27 +361,25 @@ public final class MessagePOJO {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                dataType_ = 0;
-
-                dataBodyCase_ = 0;
-                dataBody_ = null;
+                stuID_ = java.util.Collections.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000001);
                 return this;
             }
 
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return netty.codec.MessagePOJO.internal_static_MyMessage_descriptor;
+                return netty.codec.MessagePOJO.internal_static_MyQuery_descriptor;
             }
 
             @java.lang.Override
-            public netty.codec.MessagePOJO.MyMessage getDefaultInstanceForType() {
-                return netty.codec.MessagePOJO.MyMessage.getDefaultInstance();
+            public netty.codec.MessagePOJO.MyQuery getDefaultInstanceForType() {
+                return netty.codec.MessagePOJO.MyQuery.getDefaultInstance();
             }
 
             @java.lang.Override
-            public netty.codec.MessagePOJO.MyMessage build() {
-                netty.codec.MessagePOJO.MyMessage result = buildPartial();
+            public netty.codec.MessagePOJO.MyQuery build() {
+                netty.codec.MessagePOJO.MyQuery result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -628,24 +387,14 @@ public final class MessagePOJO {
             }
 
             @java.lang.Override
-            public netty.codec.MessagePOJO.MyMessage buildPartial() {
-                netty.codec.MessagePOJO.MyMessage result = new netty.codec.MessagePOJO.MyMessage(this);
-                result.dataType_ = dataType_;
-                if (dataBodyCase_ == 2) {
-                    if (studentBuilder_ == null) {
-                        result.dataBody_ = dataBody_;
-                    } else {
-                        result.dataBody_ = studentBuilder_.build();
-                    }
+            public netty.codec.MessagePOJO.MyQuery buildPartial() {
+                netty.codec.MessagePOJO.MyQuery result = new netty.codec.MessagePOJO.MyQuery(this);
+                int from_bitField0_ = bitField0_;
+                if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                    stuID_ = java.util.Collections.unmodifiableList(stuID_);
+                    bitField0_ = (bitField0_ & ~0x00000001);
                 }
-                if (dataBodyCase_ == 3) {
-                    if (teacherBuilder_ == null) {
-                        result.dataBody_ = dataBody_;
-                    } else {
-                        result.dataBody_ = teacherBuilder_.build();
-                    }
-                }
-                result.dataBodyCase_ = dataBodyCase_;
+                result.stuID_ = stuID_;
                 onBuilt();
                 return result;
             }
@@ -684,30 +433,632 @@ public final class MessagePOJO {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof netty.codec.MessagePOJO.MyMessage) {
-                    return mergeFrom((netty.codec.MessagePOJO.MyMessage)other);
+                if (other instanceof netty.codec.MessagePOJO.MyQuery) {
+                    return mergeFrom((netty.codec.MessagePOJO.MyQuery)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(netty.codec.MessagePOJO.MyMessage other) {
-                if (other == netty.codec.MessagePOJO.MyMessage.getDefaultInstance()) return this;
-                if (other.dataType_ != 0) {
-                    setDataTypeValue(other.getDataTypeValue());
+            public Builder mergeFrom(netty.codec.MessagePOJO.MyQuery other) {
+                if (other == netty.codec.MessagePOJO.MyQuery.getDefaultInstance()) return this;
+                if (!other.stuID_.isEmpty()) {
+                    if (stuID_.isEmpty()) {
+                        stuID_ = other.stuID_;
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    } else {
+                        ensureStuIDIsMutable();
+                        stuID_.addAll(other.stuID_);
+                    }
+                    onChanged();
                 }
-                switch (other.getDataBodyCase()) {
-                    case STUDENT: {
-                        mergeStudent(other.getStudent());
-                        break;
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                netty.codec.MessagePOJO.MyQuery parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (netty.codec.MessagePOJO.MyQuery) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
                     }
-                    case TEACHER: {
-                        mergeTeacher(other.getTeacher());
-                        break;
+                }
+                return this;
+            }
+            private int bitField0_;
+
+            private java.util.List<java.lang.Integer> stuID_ = java.util.Collections.emptyList();
+            private void ensureStuIDIsMutable() {
+                if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+                    stuID_ = new java.util.ArrayList<java.lang.Integer>(stuID_);
+                    bitField0_ |= 0x00000001;
+                }
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public java.util.List<java.lang.Integer>
+            getStuIDList() {
+                return java.util.Collections.unmodifiableList(stuID_);
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public int getStuIDCount() {
+                return stuID_.size();
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public int getStuID(int index) {
+                return stuID_.get(index);
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public Builder setStuID(
+                    int index, int value) {
+                ensureStuIDIsMutable();
+                stuID_.set(index, value);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public Builder addStuID(int value) {
+                ensureStuIDIsMutable();
+                stuID_.add(value);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public Builder addAllStuID(
+                    java.lang.Iterable<? extends java.lang.Integer> values) {
+                ensureStuIDIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, stuID_);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated int32 stuID = 1;</code>
+             */
+            public Builder clearStuID() {
+                stuID_ = java.util.Collections.emptyList();
+                bitField0_ = (bitField0_ & ~0x00000001);
+                onChanged();
+                return this;
+            }
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFieldsProto3(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:MyQuery)
+        }
+
+        // @@protoc_insertion_point(class_scope:MyQuery)
+        private static final netty.codec.MessagePOJO.MyQuery DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new netty.codec.MessagePOJO.MyQuery();
+        }
+
+        public static netty.codec.MessagePOJO.MyQuery getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<MyQuery>
+                PARSER = new com.google.protobuf.AbstractParser<MyQuery>() {
+            @java.lang.Override
+            public MyQuery parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new MyQuery(input, extensionRegistry);
+            }
+        };
+
+        public static com.google.protobuf.Parser<MyQuery> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<MyQuery> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public netty.codec.MessagePOJO.MyQuery getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+    }
+
+    public interface MyReplyOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:MyReply)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        java.util.List<netty.codec.MessagePOJO.Student>
+        getStusList();
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        netty.codec.MessagePOJO.Student getStus(int index);
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        int getStusCount();
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        java.util.List<? extends netty.codec.MessagePOJO.StudentOrBuilder>
+        getStusOrBuilderList();
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        netty.codec.MessagePOJO.StudentOrBuilder getStusOrBuilder(
+                int index);
+    }
+    /**
+     * Protobuf type {@code MyReply}
+     */
+    public  static final class MyReply extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:MyReply)
+            MyReplyOrBuilder {
+        private static final long serialVersionUID = 0L;
+        // Use MyReply.newBuilder() to construct.
+        private MyReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private MyReply() {
+            stus_ = java.util.Collections.emptyList();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+        private MyReply(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                                stus_ = new java.util.ArrayList<netty.codec.MessagePOJO.Student>();
+                                mutable_bitField0_ |= 0x00000001;
+                            }
+                            stus_.add(
+                                    input.readMessage(netty.codec.MessagePOJO.Student.parser(), extensionRegistry));
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownFieldProto3(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
                     }
-                    case DATABODY_NOT_SET: {
-                        break;
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                    stus_ = java.util.Collections.unmodifiableList(stus_);
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return netty.codec.MessagePOJO.internal_static_MyReply_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return netty.codec.MessagePOJO.internal_static_MyReply_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            netty.codec.MessagePOJO.MyReply.class, netty.codec.MessagePOJO.MyReply.Builder.class);
+        }
+
+        public static final int STUS_FIELD_NUMBER = 1;
+        private java.util.List<netty.codec.MessagePOJO.Student> stus_;
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        public java.util.List<netty.codec.MessagePOJO.Student> getStusList() {
+            return stus_;
+        }
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        public java.util.List<? extends netty.codec.MessagePOJO.StudentOrBuilder>
+        getStusOrBuilderList() {
+            return stus_;
+        }
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        public int getStusCount() {
+            return stus_.size();
+        }
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        public netty.codec.MessagePOJO.Student getStus(int index) {
+            return stus_.get(index);
+        }
+        /**
+         * <code>repeated .Student stus = 1;</code>
+         */
+        public netty.codec.MessagePOJO.StudentOrBuilder getStusOrBuilder(
+                int index) {
+            return stus_.get(index);
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            for (int i = 0; i < stus_.size(); i++) {
+                output.writeMessage(1, stus_.get(i));
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            for (int i = 0; i < stus_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(1, stus_.get(i));
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof netty.codec.MessagePOJO.MyReply)) {
+                return super.equals(obj);
+            }
+            netty.codec.MessagePOJO.MyReply other = (netty.codec.MessagePOJO.MyReply) obj;
+
+            boolean result = true;
+            result = result && getStusList()
+                    .equals(other.getStusList());
+            result = result && unknownFields.equals(other.unknownFields);
+            return result;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getStusCount() > 0) {
+                hash = (37 * hash) + STUS_FIELD_NUMBER;
+                hash = (53 * hash) + getStusList().hashCode();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static netty.codec.MessagePOJO.MyReply parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(netty.codec.MessagePOJO.MyReply prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+        /**
+         * Protobuf type {@code MyReply}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:MyReply)
+                netty.codec.MessagePOJO.MyReplyOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return netty.codec.MessagePOJO.internal_static_MyReply_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return netty.codec.MessagePOJO.internal_static_MyReply_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                netty.codec.MessagePOJO.MyReply.class, netty.codec.MessagePOJO.MyReply.Builder.class);
+            }
+
+            // Construct using netty.codec.MessagePOJO.MyReply.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                    getStusFieldBuilder();
+                }
+            }
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                if (stusBuilder_ == null) {
+                    stus_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                } else {
+                    stusBuilder_.clear();
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return netty.codec.MessagePOJO.internal_static_MyReply_descriptor;
+            }
+
+            @java.lang.Override
+            public netty.codec.MessagePOJO.MyReply getDefaultInstanceForType() {
+                return netty.codec.MessagePOJO.MyReply.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public netty.codec.MessagePOJO.MyReply build() {
+                netty.codec.MessagePOJO.MyReply result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public netty.codec.MessagePOJO.MyReply buildPartial() {
+                netty.codec.MessagePOJO.MyReply result = new netty.codec.MessagePOJO.MyReply(this);
+                int from_bitField0_ = bitField0_;
+                if (stusBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                        stus_ = java.util.Collections.unmodifiableList(stus_);
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    }
+                    result.stus_ = stus_;
+                } else {
+                    result.stus_ = stusBuilder_.build();
+                }
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return (Builder) super.clone();
+            }
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return (Builder) super.setField(field, value);
+            }
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return (Builder) super.clearField(field);
+            }
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return (Builder) super.clearOneof(oneof);
+            }
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return (Builder) super.setRepeatedField(field, index, value);
+            }
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return (Builder) super.addRepeatedField(field, value);
+            }
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof netty.codec.MessagePOJO.MyReply) {
+                    return mergeFrom((netty.codec.MessagePOJO.MyReply)other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(netty.codec.MessagePOJO.MyReply other) {
+                if (other == netty.codec.MessagePOJO.MyReply.getDefaultInstance()) return this;
+                if (stusBuilder_ == null) {
+                    if (!other.stus_.isEmpty()) {
+                        if (stus_.isEmpty()) {
+                            stus_ = other.stus_;
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                        } else {
+                            ensureStusIsMutable();
+                            stus_.addAll(other.stus_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.stus_.isEmpty()) {
+                        if (stusBuilder_.isEmpty()) {
+                            stusBuilder_.dispose();
+                            stusBuilder_ = null;
+                            stus_ = other.stus_;
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                            stusBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getStusFieldBuilder() : null;
+                        } else {
+                            stusBuilder_.addAllMessages(other.stus_);
+                        }
                     }
                 }
                 this.mergeUnknownFields(other.unknownFields);
@@ -725,11 +1076,11 @@ public final class MessagePOJO {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                netty.codec.MessagePOJO.MyMessage parsedMessage = null;
+                netty.codec.MessagePOJO.MyReply parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (netty.codec.MessagePOJO.MyMessage) e.getUnfinishedMessage();
+                    parsedMessage = (netty.codec.MessagePOJO.MyReply) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -738,337 +1089,246 @@ public final class MessagePOJO {
                 }
                 return this;
             }
-            private int dataBodyCase_ = 0;
-            private java.lang.Object dataBody_;
-            public DataBodyCase
-            getDataBodyCase() {
-                return DataBodyCase.forNumber(
-                        dataBodyCase_);
-            }
+            private int bitField0_;
 
-            public Builder clearDataBody() {
-                dataBodyCase_ = 0;
-                dataBody_ = null;
-                onChanged();
-                return this;
-            }
-
-
-            private int dataType_ = 0;
-            /**
-             * <code>.DataType data_type = 1;</code>
-             */
-            public int getDataTypeValue() {
-                return dataType_;
-            }
-            /**
-             * <code>.DataType data_type = 1;</code>
-             */
-            public Builder setDataTypeValue(int value) {
-                dataType_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>.DataType data_type = 1;</code>
-             */
-            public netty.codec.MessagePOJO.DataType getDataType() {
-                @SuppressWarnings("deprecation")
-                netty.codec.MessagePOJO.DataType result = netty.codec.MessagePOJO.DataType.valueOf(dataType_);
-                return result == null ? netty.codec.MessagePOJO.DataType.UNRECOGNIZED : result;
-            }
-            /**
-             * <code>.DataType data_type = 1;</code>
-             */
-            public Builder setDataType(netty.codec.MessagePOJO.DataType value) {
-                if (value == null) {
-                    throw new NullPointerException();
+            private java.util.List<netty.codec.MessagePOJO.Student> stus_ =
+                    java.util.Collections.emptyList();
+            private void ensureStusIsMutable() {
+                if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+                    stus_ = new java.util.ArrayList<netty.codec.MessagePOJO.Student>(stus_);
+                    bitField0_ |= 0x00000001;
                 }
-
-                dataType_ = value.getNumber();
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>.DataType data_type = 1;</code>
-             */
-            public Builder clearDataType() {
-
-                dataType_ = 0;
-                onChanged();
-                return this;
             }
 
-            private com.google.protobuf.SingleFieldBuilderV3<
-                    netty.codec.MessagePOJO.Student, netty.codec.MessagePOJO.Student.Builder, netty.codec.MessagePOJO.StudentOrBuilder> studentBuilder_;
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    netty.codec.MessagePOJO.Student, netty.codec.MessagePOJO.Student.Builder, netty.codec.MessagePOJO.StudentOrBuilder> stusBuilder_;
+
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public boolean hasStudent() {
-                return dataBodyCase_ == 2;
-            }
-            /**
-             * <code>.Student student = 2;</code>
-             */
-            public netty.codec.MessagePOJO.Student getStudent() {
-                if (studentBuilder_ == null) {
-                    if (dataBodyCase_ == 2) {
-                        return (netty.codec.MessagePOJO.Student) dataBody_;
-                    }
-                    return netty.codec.MessagePOJO.Student.getDefaultInstance();
+            public java.util.List<netty.codec.MessagePOJO.Student> getStusList() {
+                if (stusBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(stus_);
                 } else {
-                    if (dataBodyCase_ == 2) {
-                        return studentBuilder_.getMessage();
-                    }
-                    return netty.codec.MessagePOJO.Student.getDefaultInstance();
+                    return stusBuilder_.getMessageList();
                 }
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public Builder setStudent(netty.codec.MessagePOJO.Student value) {
-                if (studentBuilder_ == null) {
+            public int getStusCount() {
+                if (stusBuilder_ == null) {
+                    return stus_.size();
+                } else {
+                    return stusBuilder_.getCount();
+                }
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public netty.codec.MessagePOJO.Student getStus(int index) {
+                if (stusBuilder_ == null) {
+                    return stus_.get(index);
+                } else {
+                    return stusBuilder_.getMessage(index);
+                }
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public Builder setStus(
+                    int index, netty.codec.MessagePOJO.Student value) {
+                if (stusBuilder_ == null) {
                     if (value == null) {
                         throw new NullPointerException();
                     }
-                    dataBody_ = value;
+                    ensureStusIsMutable();
+                    stus_.set(index, value);
                     onChanged();
                 } else {
-                    studentBuilder_.setMessage(value);
+                    stusBuilder_.setMessage(index, value);
                 }
-                dataBodyCase_ = 2;
                 return this;
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public Builder setStudent(
+            public Builder setStus(
+                    int index, netty.codec.MessagePOJO.Student.Builder builderForValue) {
+                if (stusBuilder_ == null) {
+                    ensureStusIsMutable();
+                    stus_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    stusBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public Builder addStus(netty.codec.MessagePOJO.Student value) {
+                if (stusBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureStusIsMutable();
+                    stus_.add(value);
+                    onChanged();
+                } else {
+                    stusBuilder_.addMessage(value);
+                }
+                return this;
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public Builder addStus(
+                    int index, netty.codec.MessagePOJO.Student value) {
+                if (stusBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureStusIsMutable();
+                    stus_.add(index, value);
+                    onChanged();
+                } else {
+                    stusBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public Builder addStus(
                     netty.codec.MessagePOJO.Student.Builder builderForValue) {
-                if (studentBuilder_ == null) {
-                    dataBody_ = builderForValue.build();
+                if (stusBuilder_ == null) {
+                    ensureStusIsMutable();
+                    stus_.add(builderForValue.build());
                     onChanged();
                 } else {
-                    studentBuilder_.setMessage(builderForValue.build());
+                    stusBuilder_.addMessage(builderForValue.build());
                 }
-                dataBodyCase_ = 2;
                 return this;
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public Builder mergeStudent(netty.codec.MessagePOJO.Student value) {
-                if (studentBuilder_ == null) {
-                    if (dataBodyCase_ == 2 &&
-                            dataBody_ != netty.codec.MessagePOJO.Student.getDefaultInstance()) {
-                        dataBody_ = netty.codec.MessagePOJO.Student.newBuilder((netty.codec.MessagePOJO.Student) dataBody_)
-                                .mergeFrom(value).buildPartial();
-                    } else {
-                        dataBody_ = value;
-                    }
+            public Builder addStus(
+                    int index, netty.codec.MessagePOJO.Student.Builder builderForValue) {
+                if (stusBuilder_ == null) {
+                    ensureStusIsMutable();
+                    stus_.add(index, builderForValue.build());
                     onChanged();
                 } else {
-                    if (dataBodyCase_ == 2) {
-                        studentBuilder_.mergeFrom(value);
-                    }
-                    studentBuilder_.setMessage(value);
-                }
-                dataBodyCase_ = 2;
-                return this;
-            }
-            /**
-             * <code>.Student student = 2;</code>
-             */
-            public Builder clearStudent() {
-                if (studentBuilder_ == null) {
-                    if (dataBodyCase_ == 2) {
-                        dataBodyCase_ = 0;
-                        dataBody_ = null;
-                        onChanged();
-                    }
-                } else {
-                    if (dataBodyCase_ == 2) {
-                        dataBodyCase_ = 0;
-                        dataBody_ = null;
-                    }
-                    studentBuilder_.clear();
+                    stusBuilder_.addMessage(index, builderForValue.build());
                 }
                 return this;
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public netty.codec.MessagePOJO.Student.Builder getStudentBuilder() {
-                return getStudentFieldBuilder().getBuilder();
+            public Builder addAllStus(
+                    java.lang.Iterable<? extends netty.codec.MessagePOJO.Student> values) {
+                if (stusBuilder_ == null) {
+                    ensureStusIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, stus_);
+                    onChanged();
+                } else {
+                    stusBuilder_.addAllMessages(values);
+                }
+                return this;
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            public netty.codec.MessagePOJO.StudentOrBuilder getStudentOrBuilder() {
-                if ((dataBodyCase_ == 2) && (studentBuilder_ != null)) {
-                    return studentBuilder_.getMessageOrBuilder();
+            public Builder clearStus() {
+                if (stusBuilder_ == null) {
+                    stus_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    onChanged();
                 } else {
-                    if (dataBodyCase_ == 2) {
-                        return (netty.codec.MessagePOJO.Student) dataBody_;
-                    }
-                    return netty.codec.MessagePOJO.Student.getDefaultInstance();
+                    stusBuilder_.clear();
+                }
+                return this;
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public Builder removeStus(int index) {
+                if (stusBuilder_ == null) {
+                    ensureStusIsMutable();
+                    stus_.remove(index);
+                    onChanged();
+                } else {
+                    stusBuilder_.remove(index);
+                }
+                return this;
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public netty.codec.MessagePOJO.Student.Builder getStusBuilder(
+                    int index) {
+                return getStusFieldBuilder().getBuilder(index);
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public netty.codec.MessagePOJO.StudentOrBuilder getStusOrBuilder(
+                    int index) {
+                if (stusBuilder_ == null) {
+                    return stus_.get(index);  } else {
+                    return stusBuilder_.getMessageOrBuilder(index);
                 }
             }
             /**
-             * <code>.Student student = 2;</code>
+             * <code>repeated .Student stus = 1;</code>
              */
-            private com.google.protobuf.SingleFieldBuilderV3<
+            public java.util.List<? extends netty.codec.MessagePOJO.StudentOrBuilder>
+            getStusOrBuilderList() {
+                if (stusBuilder_ != null) {
+                    return stusBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(stus_);
+                }
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public netty.codec.MessagePOJO.Student.Builder addStusBuilder() {
+                return getStusFieldBuilder().addBuilder(
+                        netty.codec.MessagePOJO.Student.getDefaultInstance());
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public netty.codec.MessagePOJO.Student.Builder addStusBuilder(
+                    int index) {
+                return getStusFieldBuilder().addBuilder(
+                        index, netty.codec.MessagePOJO.Student.getDefaultInstance());
+            }
+            /**
+             * <code>repeated .Student stus = 1;</code>
+             */
+            public java.util.List<netty.codec.MessagePOJO.Student.Builder>
+            getStusBuilderList() {
+                return getStusFieldBuilder().getBuilderList();
+            }
+            private com.google.protobuf.RepeatedFieldBuilderV3<
                     netty.codec.MessagePOJO.Student, netty.codec.MessagePOJO.Student.Builder, netty.codec.MessagePOJO.StudentOrBuilder>
-            getStudentFieldBuilder() {
-                if (studentBuilder_ == null) {
-                    if (!(dataBodyCase_ == 2)) {
-                        dataBody_ = netty.codec.MessagePOJO.Student.getDefaultInstance();
-                    }
-                    studentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            getStusFieldBuilder() {
+                if (stusBuilder_ == null) {
+                    stusBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                             netty.codec.MessagePOJO.Student, netty.codec.MessagePOJO.Student.Builder, netty.codec.MessagePOJO.StudentOrBuilder>(
-                            (netty.codec.MessagePOJO.Student) dataBody_,
+                            stus_,
+                            ((bitField0_ & 0x00000001) == 0x00000001),
                             getParentForChildren(),
                             isClean());
-                    dataBody_ = null;
+                    stus_ = null;
                 }
-                dataBodyCase_ = 2;
-                onChanged();;
-                return studentBuilder_;
-            }
-
-            private com.google.protobuf.SingleFieldBuilderV3<
-                    netty.codec.MessagePOJO.Teacher, netty.codec.MessagePOJO.Teacher.Builder, netty.codec.MessagePOJO.TeacherOrBuilder> teacherBuilder_;
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public boolean hasTeacher() {
-                return dataBodyCase_ == 3;
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public netty.codec.MessagePOJO.Teacher getTeacher() {
-                if (teacherBuilder_ == null) {
-                    if (dataBodyCase_ == 3) {
-                        return (netty.codec.MessagePOJO.Teacher) dataBody_;
-                    }
-                    return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-                } else {
-                    if (dataBodyCase_ == 3) {
-                        return teacherBuilder_.getMessage();
-                    }
-                    return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-                }
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public Builder setTeacher(netty.codec.MessagePOJO.Teacher value) {
-                if (teacherBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    dataBody_ = value;
-                    onChanged();
-                } else {
-                    teacherBuilder_.setMessage(value);
-                }
-                dataBodyCase_ = 3;
-                return this;
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public Builder setTeacher(
-                    netty.codec.MessagePOJO.Teacher.Builder builderForValue) {
-                if (teacherBuilder_ == null) {
-                    dataBody_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    teacherBuilder_.setMessage(builderForValue.build());
-                }
-                dataBodyCase_ = 3;
-                return this;
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public Builder mergeTeacher(netty.codec.MessagePOJO.Teacher value) {
-                if (teacherBuilder_ == null) {
-                    if (dataBodyCase_ == 3 &&
-                            dataBody_ != netty.codec.MessagePOJO.Teacher.getDefaultInstance()) {
-                        dataBody_ = netty.codec.MessagePOJO.Teacher.newBuilder((netty.codec.MessagePOJO.Teacher) dataBody_)
-                                .mergeFrom(value).buildPartial();
-                    } else {
-                        dataBody_ = value;
-                    }
-                    onChanged();
-                } else {
-                    if (dataBodyCase_ == 3) {
-                        teacherBuilder_.mergeFrom(value);
-                    }
-                    teacherBuilder_.setMessage(value);
-                }
-                dataBodyCase_ = 3;
-                return this;
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public Builder clearTeacher() {
-                if (teacherBuilder_ == null) {
-                    if (dataBodyCase_ == 3) {
-                        dataBodyCase_ = 0;
-                        dataBody_ = null;
-                        onChanged();
-                    }
-                } else {
-                    if (dataBodyCase_ == 3) {
-                        dataBodyCase_ = 0;
-                        dataBody_ = null;
-                    }
-                    teacherBuilder_.clear();
-                }
-                return this;
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public netty.codec.MessagePOJO.Teacher.Builder getTeacherBuilder() {
-                return getTeacherFieldBuilder().getBuilder();
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            public netty.codec.MessagePOJO.TeacherOrBuilder getTeacherOrBuilder() {
-                if ((dataBodyCase_ == 3) && (teacherBuilder_ != null)) {
-                    return teacherBuilder_.getMessageOrBuilder();
-                } else {
-                    if (dataBodyCase_ == 3) {
-                        return (netty.codec.MessagePOJO.Teacher) dataBody_;
-                    }
-                    return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-                }
-            }
-            /**
-             * <code>.Teacher teacher = 3;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilderV3<
-                    netty.codec.MessagePOJO.Teacher, netty.codec.MessagePOJO.Teacher.Builder, netty.codec.MessagePOJO.TeacherOrBuilder>
-            getTeacherFieldBuilder() {
-                if (teacherBuilder_ == null) {
-                    if (!(dataBodyCase_ == 3)) {
-                        dataBody_ = netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-                    }
-                    teacherBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                            netty.codec.MessagePOJO.Teacher, netty.codec.MessagePOJO.Teacher.Builder, netty.codec.MessagePOJO.TeacherOrBuilder>(
-                            (netty.codec.MessagePOJO.Teacher) dataBody_,
-                            getParentForChildren(),
-                            isClean());
-                    dataBody_ = null;
-                }
-                dataBodyCase_ = 3;
-                onChanged();;
-                return teacherBuilder_;
+                return stusBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -1083,41 +1343,41 @@ public final class MessagePOJO {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:MyMessage)
+            // @@protoc_insertion_point(builder_scope:MyReply)
         }
 
-        // @@protoc_insertion_point(class_scope:MyMessage)
-        private static final netty.codec.MessagePOJO.MyMessage DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:MyReply)
+        private static final netty.codec.MessagePOJO.MyReply DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new netty.codec.MessagePOJO.MyMessage();
+            DEFAULT_INSTANCE = new netty.codec.MessagePOJO.MyReply();
         }
 
-        public static netty.codec.MessagePOJO.MyMessage getDefaultInstance() {
+        public static netty.codec.MessagePOJO.MyReply getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<MyMessage>
-                PARSER = new com.google.protobuf.AbstractParser<MyMessage>() {
+        private static final com.google.protobuf.Parser<MyReply>
+                PARSER = new com.google.protobuf.AbstractParser<MyReply>() {
             @java.lang.Override
-            public MyMessage parsePartialFrom(
+            public MyReply parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new MyMessage(input, extensionRegistry);
+                return new MyReply(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<MyMessage> parser() {
+        public static com.google.protobuf.Parser<MyReply> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<MyMessage> getParserForType() {
+        public com.google.protobuf.Parser<MyReply> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public netty.codec.MessagePOJO.MyMessage getDefaultInstanceForType() {
+        public netty.codec.MessagePOJO.MyReply getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -1141,6 +1401,11 @@ public final class MessagePOJO {
          */
         com.google.protobuf.ByteString
         getNameBytes();
+
+        /**
+         * <code>int32 score = 3;</code>
+         */
+        int getScore();
     }
     /**
      * Protobuf type {@code Student}
@@ -1157,6 +1422,7 @@ public final class MessagePOJO {
         private Student() {
             id_ = 0;
             name_ = "";
+            score_ = 0;
         }
 
         @java.lang.Override
@@ -1192,6 +1458,11 @@ public final class MessagePOJO {
                             java.lang.String s = input.readStringRequireUtf8();
 
                             name_ = s;
+                            break;
+                        }
+                        case 24: {
+
+                            score_ = input.readInt32();
                             break;
                         }
                         default: {
@@ -1269,6 +1540,15 @@ public final class MessagePOJO {
             }
         }
 
+        public static final int SCORE_FIELD_NUMBER = 3;
+        private int score_;
+        /**
+         * <code>int32 score = 3;</code>
+         */
+        public int getScore() {
+            return score_;
+        }
+
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
         public final boolean isInitialized() {
@@ -1289,6 +1569,9 @@ public final class MessagePOJO {
             if (!getNameBytes().isEmpty()) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
             }
+            if (score_ != 0) {
+                output.writeInt32(3, score_);
+            }
             unknownFields.writeTo(output);
         }
 
@@ -1304,6 +1587,10 @@ public final class MessagePOJO {
             }
             if (!getNameBytes().isEmpty()) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+            }
+            if (score_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(3, score_);
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -1325,6 +1612,8 @@ public final class MessagePOJO {
                     == other.getId());
             result = result && getName()
                     .equals(other.getName());
+            result = result && (getScore()
+                    == other.getScore());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
@@ -1340,6 +1629,8 @@ public final class MessagePOJO {
             hash = (53 * hash) + getId();
             hash = (37 * hash) + NAME_FIELD_NUMBER;
             hash = (53 * hash) + getName().hashCode();
+            hash = (37 * hash) + SCORE_FIELD_NUMBER;
+            hash = (53 * hash) + getScore();
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -1477,6 +1768,8 @@ public final class MessagePOJO {
 
                 name_ = "";
 
+                score_ = 0;
+
                 return this;
             }
 
@@ -1505,6 +1798,7 @@ public final class MessagePOJO {
                 netty.codec.MessagePOJO.Student result = new netty.codec.MessagePOJO.Student(this);
                 result.id_ = id_;
                 result.name_ = name_;
+                result.score_ = score_;
                 onBuilt();
                 return result;
             }
@@ -1559,6 +1853,9 @@ public final class MessagePOJO {
                 if (!other.getName().isEmpty()) {
                     name_ = other.name_;
                     onChanged();
+                }
+                if (other.getScore() != 0) {
+                    setScore(other.getScore());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -1683,6 +1980,32 @@ public final class MessagePOJO {
                 onChanged();
                 return this;
             }
+
+            private int score_ ;
+            /**
+             * <code>int32 score = 3;</code>
+             */
+            public int getScore() {
+                return score_;
+            }
+            /**
+             * <code>int32 score = 3;</code>
+             */
+            public Builder setScore(int value) {
+
+                score_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>int32 score = 3;</code>
+             */
+            public Builder clearScore() {
+
+                score_ = 0;
+                onChanged();
+                return this;
+            }
             @java.lang.Override
             public final Builder setUnknownFields(
                     final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1736,634 +2059,21 @@ public final class MessagePOJO {
 
     }
 
-    public interface TeacherOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:Teacher)
-            com.google.protobuf.MessageOrBuilder {
-
-        /**
-         * <code>int32 age = 1;</code>
-         */
-        int getAge();
-
-        /**
-         * <code>string name = 2;</code>
-         */
-        java.lang.String getName();
-        /**
-         * <code>string name = 2;</code>
-         */
-        com.google.protobuf.ByteString
-        getNameBytes();
-    }
-    /**
-     * Protobuf type {@code Teacher}
-     */
-    public  static final class Teacher extends
-            com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:Teacher)
-            TeacherOrBuilder {
-        private static final long serialVersionUID = 0L;
-        // Use Teacher.newBuilder() to construct.
-        private Teacher(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-            super(builder);
-        }
-        private Teacher() {
-            age_ = 0;
-            name_ = "";
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return this.unknownFields;
-        }
-        private Teacher(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            this();
-            if (extensionRegistry == null) {
-                throw new java.lang.NullPointerException();
-            }
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        case 8: {
-
-                            age_ = input.readInt32();
-                            break;
-                        }
-                        case 18: {
-                            java.lang.String s = input.readStringRequireUtf8();
-
-                            name_ = s;
-                            break;
-                        }
-                        default: {
-                            if (!parseUnknownFieldProto3(
-                                    input, unknownFields, extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(
-                        e).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
-        }
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return netty.codec.MessagePOJO.internal_static_Teacher_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return netty.codec.MessagePOJO.internal_static_Teacher_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            netty.codec.MessagePOJO.Teacher.class, netty.codec.MessagePOJO.Teacher.Builder.class);
-        }
-
-        public static final int AGE_FIELD_NUMBER = 1;
-        private int age_;
-        /**
-         * <code>int32 age = 1;</code>
-         */
-        public int getAge() {
-            return age_;
-        }
-
-        public static final int NAME_FIELD_NUMBER = 2;
-        private volatile java.lang.Object name_;
-        /**
-         * <code>string name = 2;</code>
-         */
-        public java.lang.String getName() {
-            java.lang.Object ref = name_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                name_ = s;
-                return s;
-            }
-        }
-        /**
-         * <code>string name = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-        getNameBytes() {
-            java.lang.Object ref = name_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                name_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        private byte memoizedIsInitialized = -1;
-        @java.lang.Override
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            memoizedIsInitialized = 1;
-            return true;
-        }
-
-        @java.lang.Override
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            if (age_ != 0) {
-                output.writeInt32(1, age_);
-            }
-            if (!getNameBytes().isEmpty()) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
-            }
-            unknownFields.writeTo(output);
-        }
-
-        @java.lang.Override
-        public int getSerializedSize() {
-            int size = memoizedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (age_ != 0) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(1, age_);
-            }
-            if (!getNameBytes().isEmpty()) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
-            }
-            size += unknownFields.getSerializedSize();
-            memoizedSize = size;
-            return size;
-        }
-
-        @java.lang.Override
-        public boolean equals(final java.lang.Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof netty.codec.MessagePOJO.Teacher)) {
-                return super.equals(obj);
-            }
-            netty.codec.MessagePOJO.Teacher other = (netty.codec.MessagePOJO.Teacher) obj;
-
-            boolean result = true;
-            result = result && (getAge()
-                    == other.getAge());
-            result = result && getName()
-                    .equals(other.getName());
-            result = result && unknownFields.equals(other.unknownFields);
-            return result;
-        }
-
-        @java.lang.Override
-        public int hashCode() {
-            if (memoizedHashCode != 0) {
-                return memoizedHashCode;
-            }
-            int hash = 41;
-            hash = (19 * hash) + getDescriptor().hashCode();
-            hash = (37 * hash) + AGE_FIELD_NUMBER;
-            hash = (53 * hash) + getAge();
-            hash = (37 * hash) + NAME_FIELD_NUMBER;
-            hash = (53 * hash) + getName().hashCode();
-            hash = (29 * hash) + unknownFields.hashCode();
-            memoizedHashCode = hash;
-            return hash;
-        }
-
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                java.nio.ByteBuffer data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                java.nio.ByteBuffer data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseWithIOException(PARSER, input);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseDelimitedWithIOException(PARSER, input);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseWithIOException(PARSER, input);
-        }
-        public static netty.codec.MessagePOJO.Teacher parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return com.google.protobuf.GeneratedMessageV3
-                    .parseWithIOException(PARSER, input, extensionRegistry);
-        }
-
-        @java.lang.Override
-        public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder() {
-            return DEFAULT_INSTANCE.toBuilder();
-        }
-        public static Builder newBuilder(netty.codec.MessagePOJO.Teacher prototype) {
-            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
-        @java.lang.Override
-        public Builder toBuilder() {
-            return this == DEFAULT_INSTANCE
-                    ? new Builder() : new Builder().mergeFrom(this);
-        }
-
-        @java.lang.Override
-        protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
-        }
-        /**
-         * Protobuf type {@code Teacher}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:Teacher)
-                netty.codec.MessagePOJO.TeacherOrBuilder {
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return netty.codec.MessagePOJO.internal_static_Teacher_descriptor;
-            }
-
-            @java.lang.Override
-            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return netty.codec.MessagePOJO.internal_static_Teacher_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                netty.codec.MessagePOJO.Teacher.class, netty.codec.MessagePOJO.Teacher.Builder.class);
-            }
-
-            // Construct using netty.codec.MessagePOJO.Teacher.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-            }
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessageV3
-                        .alwaysUseFieldBuilders) {
-                }
-            }
-            @java.lang.Override
-            public Builder clear() {
-                super.clear();
-                age_ = 0;
-
-                name_ = "";
-
-                return this;
-            }
-
-            @java.lang.Override
-            public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-                return netty.codec.MessagePOJO.internal_static_Teacher_descriptor;
-            }
-
-            @java.lang.Override
-            public netty.codec.MessagePOJO.Teacher getDefaultInstanceForType() {
-                return netty.codec.MessagePOJO.Teacher.getDefaultInstance();
-            }
-
-            @java.lang.Override
-            public netty.codec.MessagePOJO.Teacher build() {
-                netty.codec.MessagePOJO.Teacher result = buildPartial();
-                if (!result.isInitialized()) {
-                    throw newUninitializedMessageException(result);
-                }
-                return result;
-            }
-
-            @java.lang.Override
-            public netty.codec.MessagePOJO.Teacher buildPartial() {
-                netty.codec.MessagePOJO.Teacher result = new netty.codec.MessagePOJO.Teacher(this);
-                result.age_ = age_;
-                result.name_ = name_;
-                onBuilt();
-                return result;
-            }
-
-            @java.lang.Override
-            public Builder clone() {
-                return (Builder) super.clone();
-            }
-            @java.lang.Override
-            public Builder setField(
-                    com.google.protobuf.Descriptors.FieldDescriptor field,
-                    java.lang.Object value) {
-                return (Builder) super.setField(field, value);
-            }
-            @java.lang.Override
-            public Builder clearField(
-                    com.google.protobuf.Descriptors.FieldDescriptor field) {
-                return (Builder) super.clearField(field);
-            }
-            @java.lang.Override
-            public Builder clearOneof(
-                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                return (Builder) super.clearOneof(oneof);
-            }
-            @java.lang.Override
-            public Builder setRepeatedField(
-                    com.google.protobuf.Descriptors.FieldDescriptor field,
-                    int index, java.lang.Object value) {
-                return (Builder) super.setRepeatedField(field, index, value);
-            }
-            @java.lang.Override
-            public Builder addRepeatedField(
-                    com.google.protobuf.Descriptors.FieldDescriptor field,
-                    java.lang.Object value) {
-                return (Builder) super.addRepeatedField(field, value);
-            }
-            @java.lang.Override
-            public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof netty.codec.MessagePOJO.Teacher) {
-                    return mergeFrom((netty.codec.MessagePOJO.Teacher)other);
-                } else {
-                    super.mergeFrom(other);
-                    return this;
-                }
-            }
-
-            public Builder mergeFrom(netty.codec.MessagePOJO.Teacher other) {
-                if (other == netty.codec.MessagePOJO.Teacher.getDefaultInstance()) return this;
-                if (other.getAge() != 0) {
-                    setAge(other.getAge());
-                }
-                if (!other.getName().isEmpty()) {
-                    name_ = other.name_;
-                    onChanged();
-                }
-                this.mergeUnknownFields(other.unknownFields);
-                onChanged();
-                return this;
-            }
-
-            @java.lang.Override
-            public final boolean isInitialized() {
-                return true;
-            }
-
-            @java.lang.Override
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                netty.codec.MessagePOJO.Teacher parsedMessage = null;
-                try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (netty.codec.MessagePOJO.Teacher) e.getUnfinishedMessage();
-                    throw e.unwrapIOException();
-                } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
-                return this;
-            }
-
-            private int age_ ;
-            /**
-             * <code>int32 age = 1;</code>
-             */
-            public int getAge() {
-                return age_;
-            }
-            /**
-             * <code>int32 age = 1;</code>
-             */
-            public Builder setAge(int value) {
-
-                age_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>int32 age = 1;</code>
-             */
-            public Builder clearAge() {
-
-                age_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private java.lang.Object name_ = "";
-            /**
-             * <code>string name = 2;</code>
-             */
-            public java.lang.String getName() {
-                java.lang.Object ref = name_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    name_ = s;
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-            /**
-             * <code>string name = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getNameBytes() {
-                java.lang.Object ref = name_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    name_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-            /**
-             * <code>string name = 2;</code>
-             */
-            public Builder setName(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-
-                name_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>string name = 2;</code>
-             */
-            public Builder clearName() {
-
-                name_ = getDefaultInstance().getName();
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>string name = 2;</code>
-             */
-            public Builder setNameBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                checkByteStringIsUtf8(value);
-
-                name_ = value;
-                onChanged();
-                return this;
-            }
-            @java.lang.Override
-            public final Builder setUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.setUnknownFieldsProto3(unknownFields);
-            }
-
-            @java.lang.Override
-            public final Builder mergeUnknownFields(
-                    final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.mergeUnknownFields(unknownFields);
-            }
-
-
-            // @@protoc_insertion_point(builder_scope:Teacher)
-        }
-
-        // @@protoc_insertion_point(class_scope:Teacher)
-        private static final netty.codec.MessagePOJO.Teacher DEFAULT_INSTANCE;
-        static {
-            DEFAULT_INSTANCE = new netty.codec.MessagePOJO.Teacher();
-        }
-
-        public static netty.codec.MessagePOJO.Teacher getDefaultInstance() {
-            return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<Teacher>
-                PARSER = new com.google.protobuf.AbstractParser<Teacher>() {
-            @java.lang.Override
-            public Teacher parsePartialFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return new Teacher(input, extensionRegistry);
-            }
-        };
-
-        public static com.google.protobuf.Parser<Teacher> parser() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<Teacher> getParserForType() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public netty.codec.MessagePOJO.Teacher getDefaultInstanceForType() {
-            return DEFAULT_INSTANCE;
-        }
-
-    }
-
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_MyMessage_descriptor;
+            internal_static_MyQuery_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_MyMessage_fieldAccessorTable;
+            internal_static_MyQuery_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_MyReply_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_MyReply_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
             internal_static_Student_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_Student_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_Teacher_descriptor;
-    private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_Teacher_fieldAccessorTable;
 
     public static com.google.protobuf.Descriptors.FileDescriptor
     getDescriptor() {
@@ -2373,14 +2083,11 @@ public final class MessagePOJO {
             descriptor;
     static {
         java.lang.String[] descriptorData = {
-                "\n\rMessage.proto\"o\n\tMyMessage\022\034\n\tdata_typ" +
-                        "e\030\001 \001(\0162\t.DataType\022\033\n\007student\030\002 \001(\0132\010.St" +
-                        "udentH\000\022\033\n\007teacher\030\003 \001(\0132\010.TeacherH\000B\n\n\010" +
-                        "dataBody\"#\n\007Student\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030" +
-                        "\002 \001(\t\"$\n\007Teacher\022\013\n\003age\030\001 \001(\005\022\014\n\004name\030\002 " +
-                        "\001(\t*,\n\010DataType\022\017\n\013StudentType\020\000\022\017\n\013Teac" +
-                        "herType\020\001B\032\n\013netty.codecB\013MessagePOJOb\006p" +
-                        "roto3"
+                "\n\rMessage.proto\"\030\n\007MyQuery\022\r\n\005stuID\030\001 \003(" +
+                        "\005\"!\n\007MyReply\022\026\n\004stus\030\001 \003(\0132\010.Student\"2\n\007" +
+                        "Student\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005sco" +
+                        "re\030\003 \001(\005B\032\n\013netty.codecB\013MessagePOJOb\006pr" +
+                        "oto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2394,24 +2101,24 @@ public final class MessagePOJO {
                 .internalBuildGeneratedFileFrom(descriptorData,
                         new com.google.protobuf.Descriptors.FileDescriptor[] {
                         }, assigner);
-        internal_static_MyMessage_descriptor =
+        internal_static_MyQuery_descriptor =
                 getDescriptor().getMessageTypes().get(0);
-        internal_static_MyMessage_fieldAccessorTable = new
+        internal_static_MyQuery_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_MyMessage_descriptor,
-                new java.lang.String[] { "DataType", "Student", "Teacher", "DataBody", });
-        internal_static_Student_descriptor =
+                internal_static_MyQuery_descriptor,
+                new java.lang.String[] { "StuID", });
+        internal_static_MyReply_descriptor =
                 getDescriptor().getMessageTypes().get(1);
+        internal_static_MyReply_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_MyReply_descriptor,
+                new java.lang.String[] { "Stus", });
+        internal_static_Student_descriptor =
+                getDescriptor().getMessageTypes().get(2);
         internal_static_Student_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_Student_descriptor,
-                new java.lang.String[] { "Id", "Name", });
-        internal_static_Teacher_descriptor =
-                getDescriptor().getMessageTypes().get(2);
-        internal_static_Teacher_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_Teacher_descriptor,
-                new java.lang.String[] { "Age", "Name", });
+                new java.lang.String[] { "Id", "Name", "Score", });
     }
 
     // @@protoc_insertion_point(outer_class_scope)
